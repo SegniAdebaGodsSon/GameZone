@@ -8,6 +8,7 @@ export default class API{
         this.developers = `https://rawg.io/api/developers`
         this.stores = `https://rawg.io/api/stores`;
         this.publishers = `https://api.rawg.io/api/publishers`;
+        this.tags =`https://api.rawg.io/api/tags`;
         this.myHeader = new Headers({
             "Accept"       : "application/json",
             "Content-Type" : "application/json",
@@ -60,6 +61,12 @@ export default class API{
         return {data};
     }
 
+    async getTags(){
+        const response = await fetch(this.tags, this.myHeader);
+        const data = await response.json();
+        return {data};
+    }
+
 
     // -------------- get infos on the above ... the default values --------------
     async getGameInfo(id){
@@ -104,7 +111,11 @@ export default class API{
         return {data};
     }
 
-
+    async getTagInfo(id){
+        const response = await fetch(`${this.getTags}/${id}`);
+        const data = await response.json();
+        return {data};
+    }
 
     // -------------- custom searches and specific details --------------
 
