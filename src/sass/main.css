@@ -1,3 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+body {
+  font-size: 0.9rem;
+  background: #151515;
+}
+
+.border-top {
+  border-color: #374140 !important;
+}
+
+/* JUmbo text */
+.jumbo-text {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.jumbo-text + p {
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* SEARCH BAR */
+.ui {
+  width: 80%;
+  margin: auto;
+}
+
+.ui input {
+  background-color: rgba(107, 98, 98, 0.586) !important;
+  outline: none;
+  padding: 0.8rem !important;
+  -webkit-transition: 0.5s all !important;
+  transition: 0.5s all !important;
+}
+
+.ui input:hover,
+input:focus {
+  background-color: white !important;
+  outline: none;
+}
+
+/* CARDS */
+.page-content .container-fluid .row .col-md-4 .card {
+  background-color: #202020 !important;
+  color: #e9e9e9 !important;
+  border-radius: 10px !important;
+  -webkit-box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+  /* height: 20rem; */
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+}
+
+.page-content .container-fluid .row .col-md-4 .card:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  -webkit-box-shadow: 0 50px 50px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.6);
+}
+
+.card > img {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  height: 13rem;
+  -webkit-transition: 0.1s all;
+  transition: 0.1s all;
+}
+
+.card:hover > img {
+  /* transform: scale(1.05); */
+  -webkit-box-shadow: 0 30px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* CARDS */
 .sidebar-wrapper {
   width: 200px;
   height: 100%;
