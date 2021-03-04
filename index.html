@@ -150,6 +150,38 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <script type="module" src="./assets/scripts/app.js"></script>
-</body>
+
+
+    <script>
+        $(".sidebar-dropdown > a").click(function () {
+        $(".sidebar-submenu").slideUp(200);
+        if ($(this).parent().hasClass("active")) {
+        $(".sidebar-dropdown").removeClass("active");
+        $(this).parent().removeClass("active");
+        } else {
+        $(".sidebar-dropdown").removeClass("active");
+        $(this).next(".sidebar-submenu").slideDown(200);
+        $(this).parent().addClass("active");
+        }
+    });
+    //Pin sidebar
+    $("#pin-sidebar").ready(function () {
+        $(".page-wrapper").addClass("pinned");
+        $("#sidebar").hover(
+        function () {
+            console.log("mouseenter");
+            $(".page-wrapper").addClass("sidebar-hovered");
+        },
+        function () {
+            console.log("mouseout");
+            $(".page-wrapper").removeClass("sidebar-hovered");
+        }
+        );
+    });
+
+    </script>
+    </body>
+
+
 
 </html>
