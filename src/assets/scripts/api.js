@@ -1,6 +1,8 @@
 export default class API{
 
     constructor(){
+        // key=${this.key}
+        this.key = `a34d789083bb43cc815edf13561d0aef`;
         this.games = `https://api.rawg.io/api/games`;
         this.genres = `https://api.rawg.io/api/genres`;
         this.tags = `https://api.rawg.io/api/tags`;
@@ -70,7 +72,7 @@ export default class API{
 
     // -------------- get infos on the above ... the default values --------------
     async getGameInfo(id){
-        const response = await fetch(`${this.games}/${id}`, this.myHeader);
+        const response = await fetch(`${this.games}/${id}`);
         const data = await response.json();
         return {data}; 
     }

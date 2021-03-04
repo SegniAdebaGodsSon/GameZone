@@ -1,14 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/style/main.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
     <title>GameZone</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
+<link rel="stylesheet" href="./assets/style/main.css">
+
 </head>
+
 <body>
-    
-    <h1>Hello World</h1>
-    <script type="module" src="./assets/scripts/app.js"></script>
+    <div class="ui category search col text-center pt-5">
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="Search games...">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+    <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                <div id="pin-sidebar" class="sidebar-item sidebar-menu">
+                    <ul>
+                       
+                        <li class="header-menu">
+                            <span>Platforms</span>
+                        </li>
+                        <li>
+                            <a class="platform" href="#" data-id="4">
+                                <i class="fab fa-windows platform"></i>
+                                <span class="menu-text platform">PC</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platform" href="#" data-id="187">
+                                <i class="fab fa-playstation platform"></i>
+                                <span class="menu-text platform">PlayStation 5</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platform" href="#" data-id="1">
+                                <i class="fab fa-xbox platform"></i>
+                                <span class="menu-text platform">Xbox One</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a a class="platform" href="#" data-id="7">
+                                <i class="fas fa-mobile-alt platform"></i>
+                                <span class="menu-text platform">Nintendo Switch</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platform" href="#" data-id="3">
+                                <i class="fab fa-apple platform"></i>
+                                <span class="menu-text platform">iOS</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platform" href="#" data-id="21">
+                                <i class="fab fa-android platform"></i>
+                                <span class="menu-text platform">Android</span>
+                            </a>
+                        </li>
+
+                        <!-- <li class="header-menu">
+                            <span>Genres</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i>
+                                    <img src="https://i.ytimg.com/vi/BR8Wnc_AbBc/maxresdefault.jpg" alt="" class="img-fluid">
+                                </i>                                
+                                <span class="menu-text">Action</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i>
+                                    <img src="https://i.ytimg.com/vi/BR8Wnc_AbBc/maxresdefault.jpg" alt="" class="img-fluid">
+                                </i>                                
+                                <span class="menu-text">Strategy</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i>
+                                    <img src="https://i.ytimg.com/vi/BR8Wnc_AbBc/maxresdefault.jpg" alt="" class="img-fluid">
+                                </i>
+                                <span class="menu-text">RPG</span>
+                            </a>
+                        </li> -->
+                    </ul>
+                </div>
+                <!-- sidebar-menu  -->
+            </div>
+            <!-- sidebar-footer  -->
+        </nav >
+        <!-- page-content  -->
+
+        <div class="border-top mt-3"></div>
+
+        <main class="page-content pt-2">
+            
+            
+            <div class="container-fluid">
+                <div class="pt-3">
+                    <h1 class="jumbo-text page-ish">
+                        All Games
+                    </h1>
+
+                </div>
+                <div class="row all-games">
+                    <!-- <div class="col-sm-10 col-md-4 col-lg-3 pt-5">
+                        <div class="card">
+                            <img src="https://www.dlcompare.com/upload/cache/game_tetiere/upload/gameimage/file/38085.jpeg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <span class="platform-supported">
+                                    <i class="fab fa-windows pr-1"></i>
+                                   <i class="fab fa-playstation pr-1"></i>
+                                   <i class="fab fa-xbox pr-1"></i>
+                                   <i class="fas fa-mobile-alt pr-1"></i>
+                                   <i class="fab fa-android pr-1"></i>
+                                   <i class="fab fa-apple pr-1"></i>
+   
+                               </span>  
+                              <h5 class="card-title">Card title</h5>
+                            </div>
+                          </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </main>
+ 
+    </div>
+    <!-- page-wrapper -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script type="module" src="./assets/scripts/app.js"></script>
 </body>
+
 </html>
