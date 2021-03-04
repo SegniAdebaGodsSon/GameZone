@@ -7,25 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
         content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
-    <title>Genres</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./style/main.css">
+    <title>Genre</title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
+<link rel="stylesheet" href="./src/sass/main.css">
 </head>
 
 <body>
-    <div class="ui category search col text-center pt-5">
-        <div class="ui icon input">
-          <input class="prompt" type="text" placeholder="Search games...">
-          <i class="search icon"></i>
-        </div>
-        <div class="results"></div>
-      </div>
-    <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
+    <div class="page-wrapper">
+        
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
                 <div id="pin-sidebar" class="sidebar-item sidebar-menu">
@@ -192,59 +186,52 @@
         </nav >
         <!-- page-content  -->
 
-        <div class="border-top mt-3"></div>
 
-        <main id="platforms" class="page-content genres pt-2">
-            
-            
+
+
+        <main id="genre" class="page-content pt-2">
             <div class="container-fluid">
-                <div class="row pt-3 col">
-                    <h1 class="jumbo-text text-center">
-                        Genres
+                <div class="pt-3 p-5">
+                    <h1 class="jumbo-text h1">
+                        Genre Name
                     </h1>
+                    <p class="game-description-text lead">
+                        This is The description about the specific genre. 
+                    </p>
                 </div>
-                <div class="row">
+                <div class="border-top mt-3"></div>
+
+                <div class="row p-3">
                     <div class="col-sm-10 col-md-4 col-lg-3 pt-5">
                         <div class="card">
+                            <img src="https://www.dlcompare.com/upload/cache/game_tetiere/upload/gameimage/file/38085.jpeg" class="card-img-top" alt="...">
                             <div class="card-body">
-                              <h5 class="card-title text-center h2 border-bottom pb-2">Genres Name</h5>
-                              <hr class="my-4">
-                                <div class="d-flex justify-align-between">
-                                    <p class="lead">Genres Count</p>
-                                    <p class="ml-auto card-text lead">1450</p>
-                                </div>
-                                <div class="col text-center mt-5">
-                                    <a href="#" class="btn btn-outline-secondary btn-lg lead">Show More</a>
-                                </div>
+                             <span class="platform-supported">
+                                 <i class="fab fa-windows pr-1"></i>
+                                <i class="fab fa-playstation pr-1"></i>
+                                <i class="fab fa-xbox pr-1"></i>
+                                <i class="fas fa-mobile-alt pr-1"></i>
+                                <i class="fab fa-android pr-1"></i>
+                                <i class="fab fa-apple pr-1"></i>
+
+                            </span>   
+                              <h5 class="card-title">Card title</h5>
                             </div>
                           </div>
-                    </div> 
-
-                    
+                        </div>
                     </div>
                 </div>
             </div>
         </main>
  
     </div>
-
-    <!-- MODAL VIEW -->
-    <!-- Button trigger modal -->
- 
-    <!-- Button trigger modal -->
-
-  
-  <!-- Modal -->
-
     <!-- page-wrapper -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
-</script>
-<script type="module" src="./scripts/app.js"></script>
-
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="./src/js/main.js"></script>
 </body>
 
 </html>
