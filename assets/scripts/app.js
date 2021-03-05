@@ -15,7 +15,9 @@ if(ui.allGames){
       .then(data => ui.showGames(data));
 
       ui.allGames.addEventListener('click', e => {
-            if(e.target.classList.contains('browse    '))
+
+            
+           
             if(e.target.classList.contains('card') || e.target.classList.contains('card-title') || e.target.classList.contains('card-body') || e.target.classList.contains('card-img-top')){
                   let mainCard;
                   if(e.target.classList.contains('card')){
@@ -31,7 +33,9 @@ if(ui.allGames){
 
                   }
 
-                  console.log(mainCard);
+                  if(mainCard.classList.contains('browse')){
+                        return;
+                  }
                   let id = mainCard.dataset.id;
                   
                   sessionStorage.setItem('currGame', id);

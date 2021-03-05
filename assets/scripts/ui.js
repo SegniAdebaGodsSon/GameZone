@@ -79,7 +79,7 @@ export default class UI{
         console.log(browsed)
         
         browsed.forEach(data => {
-            let html = `<div class="col-sm-10 col-md-4 col-lg-3 pt-5" >
+            let html = `<div class="col-sm-10 col-md-4 col-lg-3 pt-5 browse" >
                         <div class="card" style="background-image: url(${data.image_background}); background-position: center center; background-size: cover; background-blend-mode: multiply; backgroud-color: rgb(0, 0, 0, 0.5)">
                             <div class="card-body">
                               <h5 class="card-title text-center h2 border-bottom pb-2">${data.name}</h5>
