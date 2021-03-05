@@ -5,6 +5,8 @@ const api = new API(),
       ui = new UI();
 
 const gamePage = document.querySelector('.gamePage');
+const title = document.querySelector('.page-ish');
+
 
 
 if(ui.allGames){
@@ -13,6 +15,7 @@ if(ui.allGames){
       .then(data => ui.showGames(data));
 
       ui.allGames.addEventListener('click', e => {
+            if(e.target.classList.contains('browse    '))
             if(e.target.classList.contains('card') || e.target.classList.contains('card-title') || e.target.classList.contains('card-body') || e.target.classList.contains('card-img-top')){
                   let mainCard;
                   if(e.target.classList.contains('card')){
@@ -28,6 +31,7 @@ if(ui.allGames){
 
                   }
 
+                  console.log(mainCard);
                   let id = mainCard.dataset.id;
                   
                   sessionStorage.setItem('currGame', id);
@@ -85,7 +89,7 @@ if(document.querySelector('.sidebar-content')){
                   platform.set('21', 'Android');
 
 
-                  document.querySelector('.page-ish').textContent = 'Games for - '+ platform.get(id);
+                  title.textContent = 'Games for - '+ platform.get(id);
                   let description = document.querySelector('.description');
                   api.getPlatformInfo(id).then(data => description.innerHTML = data.data.description.slice(3, -4));
                   ui.allGames.innerHTML = `<div class="spinner-border text-secondary mx-auto mt-6" style="width: 10rem; height: 10rem;" role="status"><span class="visually-hidden"></span></div>`;
@@ -113,13 +117,56 @@ if(document.querySelector('.sidebar-content')){
                   genre.set('1', 'Racing');
                   genre.set('15', 'Sports');
 
-                  document.querySelector('.page-ish').textContent = 'Games for - '+ genre.get(id);
+                  title.textContent = 'Games for - '+ genre.get(id);
                   let description = document.querySelector('.description');
                   api.getGenreInfo(id).then(data => description.innerHTML = data.data.description.slice(3, -4));
                   ui.allGames.innerHTML = `<div class="spinner-border text-secondary mx-auto mt-6" style="width: 10rem; height: 10rem;" role="status"><span class="visually-hidden"></span></div>`;
 
 
             }
+
+            if(e.target.classList.contains('browse')){
+                  let classes = [... e.target.classList];
+
+                  // ui.allGames.innerHTML = `<div class="spinner-border text-secondary mx-auto mt-6" style="width: 10rem; height: 10rem;" role="status"><span class="visually-hidden"></span></div>`;
+                  title.textContent = classes[classes.length-1];
+                  title.style.textTransform = 'capitalize';
+                  ui.allGames.innerHTML = `<div class="spinner-border text-secondary mx-auto mt-6" style="width: 10rem; height: 10rem;" role="status"><span class="visually-hidden"></span></div>`;
+
+
+                  switch(classes[classes.length-1]){
+                        case 'platforms':                        
+                              api.getPlatforms().then(data => ui.showBrowsed(data.data.results));
+                              break;
+
+                        case 'genres':
+                              api.getGenres().then(data => ui.showBrowsed(data.data.results));
+                              break;
+                              
+                        case 'developers':
+                              api.getDevelopers().then(data => ui.showBrowsed(data.data.results));
+                              break;
+
+                        case 'stores':
+                              api.getStores().then(data => ui.showBrowsed(data.data.results));
+                              break;      
+
+                        case 'publishers':
+                              api.getPublishers().then(data => ui.showBrowsed(data.data.results));
+                              break;
+                              
+                        case 'tags':
+                              api.getTags().then(data => ui.showBrowsed(data.data.results));
+                              break;
+                              
+                        }
+
+
+            }
+
+
+
+
 
       });   
 }

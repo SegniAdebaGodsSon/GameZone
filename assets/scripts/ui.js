@@ -73,4 +73,30 @@ export default class UI{
             this.allGames.innerHTML += html;
         })
     }
+
+    showBrowsed(browsed){
+        this.allGames.innerHTML = '';
+        console.log(browsed)
+        
+        browsed.forEach(data => {
+            let html = `<div class="col-sm-10 col-md-4 col-lg-3 pt-5" >
+                        <div class="card" style="background-image: url(${data.image_background}); background-position: center center; background-size: cover; background-blend-mode: multiply; backgroud-color: rgb(0, 0, 0, 0.5)">
+                            <div class="card-body">
+                              <h5 class="card-title text-center h2 border-bottom pb-2">${data.name}</h5>
+                              <hr class="my-4">
+                                <div class="d-flex justify-align-between">
+                                    <p class="lead">Games Count</p>
+                                    <p class="ml-auto card-text lead">${data.games_count}</p>
+                                </div>
+                                <div class="col text-center mt-5">
+                                    <a href="#" class="btn btn-outline-secondary btn-lg lead">Show More</a>
+                                </div>
+                            </div>
+                          </div>
+                    </div> `
+
+                this.allGames.innerHTML += html;
+        })
+
+    }
 }
