@@ -70,26 +70,38 @@ if(document.querySelector('.sidebar-content')){
       document.querySelector('.sidebar-content').addEventListener('click', e =>{
             if(e.target.classList.contains('platform')){
                   let target = e.target;
-                  if(e.target.tagName === "A" || e.target.tagName === "SPAN"){
+                  if(e.target.tagName === "I" || e.target.tagName === "SPAN"){
                         target = e.target.parentElement;
                   }
                   let id = target.dataset.id;
-                  api.compoundSearch('', '', '', '', id ).then(data => ui.showGames(data))
+                  api.compoundSearch('', '', '', '', id ).then(data => ui.showGames(data));
                   let platform = new Map();
-                  platform.set('4', 'PC')
-                  platform.set('187', 'Playstation 5')
-                  platform.set('1', 'Xbox One')
-                  platform.set('7', 'Nintendo Switch')
-                  platform.set('3', 'IOS')
-                  platform.set('21', 'Android')
+                  platform.set('4', 'PC');
+                  platform.set('187', 'Playstation 5');
+                  platform.set('1', 'Xbox One');
+                  platform.set('7', 'Nintendo Switch');
+                  platform.set('3', 'IOS');
+                  platform.set('21', 'Android');
 
 
                   document.querySelector('.page-ish').textContent = 'Games for: '+ platform.get(id);
+                  ui.allGames.innerHTML = `<div class="spinner-border text-secondary mx-auto mt-6" style="width: 10rem; height: 10rem;" role="status"><span class="visually-hidden"></span></div>`;
+            }
+
+
+            if(e.target.classList.contains('genre')){
+                  let target = e.target;
+                  if(e.target.tagName === "I" || e.target.tagName === "SPAN"){
+                        target = e.target.parentElement;
+                  }
+
+                  let id = target.dataset.id;
             }
 
       });   
 }
 
 
+api.getGenres().then(data => console.log(data))
 
 
