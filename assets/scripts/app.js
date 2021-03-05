@@ -31,7 +31,7 @@ if(ui.allGames){
                   let id = mainCard.dataset.id;
                   
                   sessionStorage.setItem('currGame', id);
-                  window.open('./assets/game.html', '_blank')
+                  window.open('./assets/game.html', '_self')
                   
             }
       })
@@ -67,10 +67,11 @@ if(gamePage){
 
 
 if(document.querySelector('.sidebar-content')){
+
       document.querySelector('.sidebar-content').addEventListener('click', e =>{
             if(e.target.classList.contains('platform')){
                   let target = e.target;
-                  if(e.target.tagName === "I" || e.target.tagName === "SPAN"){
+                  if(target.tagName === "I" || target.tagName === "SPAN"){
                         target = e.target.parentElement;
                   }
                   let id = target.dataset.id;
@@ -84,24 +85,46 @@ if(document.querySelector('.sidebar-content')){
                   platform.set('21', 'Android');
 
 
-                  document.querySelector('.page-ish').textContent = 'Games for: '+ platform.get(id);
+                  document.querySelector('.page-ish').textContent = 'Games for - '+ platform.get(id);
+                  let description = document.querySelector('.description');
+                  api.getPlatformInfo(id).then(data => description.innerHTML = data.data.description.slice(3, -4));
                   ui.allGames.innerHTML = `<div class="spinner-border text-secondary mx-auto mt-6" style="width: 10rem; height: 10rem;" role="status"><span class="visually-hidden"></span></div>`;
             }
 
 
             if(e.target.classList.contains('genre')){
                   let target = e.target;
-                  if(e.target.tagName === "I" || e.target.tagName === "SPAN"){
+                  if(target.tagName === "I" || target.tagName === "SPAN"){
                         target = e.target.parentElement;
+                  }else if(target.tagName === "IMG"){
+                        
+                        target = e.target.parentElement.parentElement;
                   }
 
                   let id = target.dataset.id;
+                  api.compoundSearch('', id, '', '', '' ).then(data => ui.showGames(data));
+                  let genre = new Map();
+                  genre.set('4', 'Action');
+                  genre.set('10', 'Strategy');
+                  genre.set('5', 'RPG');
+                  genre.set('2', 'Shooter');
+                  genre.set('3', 'Adventure');
+                  genre.set('7', 'Puzzle');
+                  genre.set('1', 'Racing');
+                  genre.set('15', 'Sports');
+
+                  document.querySelector('.page-ish').textContent = 'Games for - '+ genre.get(id);
+                  let description = document.querySelector('.description');
+                  api.getGenreInfo(id).then(data => description.innerHTML = data.data.description.slice(3, -4));
+                  ui.allGames.innerHTML = `<div class="spinner-border text-secondary mx-auto mt-6" style="width: 10rem; height: 10rem;" role="status"><span class="visually-hidden"></span></div>`;
+
+
             }
 
       });   
 }
 
 
-api.getGenres().then(data => console.log(data))
+api.getPlatformInfo('4').then(data=>console.log(data))
 
 
