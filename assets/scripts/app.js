@@ -69,7 +69,7 @@ if(gamePage){
       let gameId = sessionStorage.getItem('currGame');
       api.getGameInfo(gameId).then(data => {
             let platformsList = data.data.platforms.map(platform => platform.platform.name);
-            console.log(platforms)
+            console.log(platformsList)
             gameHeadingBG.style.backgroundImage = `url(${data.data.background_image_additional || data.data.background_image})`
             img.src = `${data.data.background_image}`
             title.textContent = `${data.data.name}`
@@ -80,9 +80,9 @@ if(gamePage){
             platformsList.forEach(platform => {
                   if(platform === "PC"){
                         platforms.innerHTML += `<i class="fab fa-windows pr-1"></i>`;
-                    }else if(platform === "PlayStation"){
+                    }else if(platform === "PlayStation" || platform === "PlayStation 4"){
                         platforms.innerHTML += `<i class="fab fa-playstation pr-1"></i>`;
-                    }else if(platform === "Xbox"){
+                    }else if(platform === "Xbox" || platform === "Xbox One"){
                         platforms.innerHTML += `<i class="fab fa-xbox pr-1"></i>`;
                     }else if(platform === "Apple Macintosh" || platform === "iOS"){
                         platforms.innerHTML += `<i class="fab fa-apple pr-1"></i>`
