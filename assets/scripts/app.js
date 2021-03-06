@@ -37,6 +37,8 @@ if(ui.allGames){
                         return;
                   }
                   let id = mainCard.dataset.id;
+
+
                   
                   sessionStorage.setItem('currGame', id);
                   window.open('./assets/game.html', '_self')
@@ -65,11 +67,13 @@ if(gamePage){
       const desc = document.querySelector('.game-page-description');
       let gameId = sessionStorage.getItem('currGame');
       api.getGameInfo(gameId).then(data => {
+            console.log(data)
             gameHeadingBG.style.backgroundImage = `url(${data.data.background_image})`
             img.src = `${data.data.background_image}`
             title.textContent = `${data.data.name}`
             date.textContent = `${data.data.released}`
             desc.textContent = `${data.data.description_raw}`
+            api.getGameScreenshots(gameId).then(data => ui.generateCarousel(data.data.results));
       })
 }
 
@@ -176,6 +180,6 @@ if(document.querySelector('.sidebar-content')){
 }
 
 
-api.getPlatformInfo('4').then(data=>console.log(data))
+// api.getPlatformInfo('4').then(data=>console.log(data))
 
 

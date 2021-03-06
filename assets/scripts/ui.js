@@ -1,6 +1,8 @@
 export default class UI{
     constructor(){
         this.allGames = document.querySelector('.all-games');
+        this.carouselIndicators = document.querySelector('.carousel-indicators');
+        this.carouselContent = document.querySelector('.carousel-inner');
     }
 
     showGames(games){
@@ -76,21 +78,26 @@ export default class UI{
 
     showBrowsed(browsed){
         this.allGames.innerHTML = '';
-        console.log(browsed)
+        
         
         browsed.forEach(data => {
+            let games = data.games.map(game => game.name);
+            games = games.join('   -   ');
+
             let html = `<div class="col-sm-10 col-md-4 col-lg-3 pt-5 browse" >
                         <div class="card" style="background-image: url(${data.image_background}); background-position: center center; background-size: cover; background-blend-mode: multiply; background-color: rgb(0, 0, 0, 0.7) !important">
                             <div class="card-body">
                               <h5 class="card-title text-center h2 border-bottom pb-2">${data.name}</h5>
-                              <hr class="my-4">
+                              <hr class="my-3">
                                 <div class="d-flex justify-align-between">
                                     <p class="lead">Games Count</p>
                                     <p class="ml-auto card-text lead">${data.games_count}</p>
                                 </div>
-                                <div class="col text-center mt-5">
-                                    <a href="#" class="btn btn-outline-secondary btn-lg lead">Show More</a>
-                                </div>
+
+                                <div class="d-flex justify-align-between text-secondary">
+                                    <p class="card-text">${games} ...</p>
+                                </div>     
+                                
                             </div>
                           </div>
                     </div> `
@@ -98,5 +105,19 @@ export default class UI{
                 this.allGames.innerHTML += html;
         })
 
+    }
+
+
+
+    generateCarousel(images){
+        this.carouselContent.innerHTML = '';
+        this.carouselIndicators.innerHTML = '';
+        images.forEach((image, index) => {
+            let active = index ===0 ? 'active': '';            
+            this.carouselIndicators.innerHTML += `<li data-target="#gameImages" data-slide-to="${index}"></li>`
+            this.carouselContent.innerHTML += `<div class="carousel-item ${active}">
+                                                     <img src="${image.image}" class="d-block w-100" alt="..."">
+                                                </div>`
+        });
     }
 }
