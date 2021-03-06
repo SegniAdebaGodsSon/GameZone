@@ -13,6 +13,9 @@ jQuery(function ($) {
       }
     });
     //Pin sidebar
+
+    //pining the sidebar when hovering
+
     $("#pin-sidebar").ready(function () {
       $(".page-wrapper").addClass("pinned");
       $("#sidebar").hover(
