@@ -65,15 +65,35 @@ if(gamePage){
       const img = document.querySelector('.game-page-img');
       const date = document.querySelector('.game-page-released');
       const desc = document.querySelector('.game-page-description');
+      const platforms = document.querySelector('.game-page-platforms');
       let gameId = sessionStorage.getItem('currGame');
       api.getGameInfo(gameId).then(data => {
-            console.log(data)
-            gameHeadingBG.style.backgroundImage = `url(${data.data.background_image})`
+            let platformsList = data.data.platforms.map(platform => platform.platform.name);
+            console.log(platforms)
+            gameHeadingBG.style.backgroundImage = `url(${data.data.background_image_additional || data.data.background_image})`
             img.src = `${data.data.background_image}`
             title.textContent = `${data.data.name}`
             date.textContent = `${data.data.released}`
             desc.textContent = `${data.data.description_raw}`
             api.getGameScreenshots(gameId).then(data => ui.generateCarousel(data.data.results));
+
+            platformsList.forEach(platform => {
+                  if(platform === "PC"){
+                        platforms.innerHTML += `<i class="fab fa-windows pr-1"></i>`;
+                    }else if(platform === "PlayStation"){
+                        platforms.innerHTML += `<i class="fab fa-playstation pr-1"></i>`;
+                    }else if(platform === "Xbox"){
+                        platforms.innerHTML += `<i class="fab fa-xbox pr-1"></i>`;
+                    }else if(platform === "Apple Macintosh" || platform === "iOS"){
+                        platforms.innerHTML += `<i class="fab fa-apple pr-1"></i>`
+                    }else if(platform === "Linux"){
+                        platforms.innerHTML += `<i class="fab fa-linux"></i>`
+                    }else if(platform === "Nintendo"){
+                        platforms.innerHTML += `<i class="fa fa-gamepad"></i>`
+                    }else if(platform === "Android"){
+                        platforms.innerHTML += `<i class="fab fa-android pr-1"></i>`
+                    }
+            })
       })
 }
 
