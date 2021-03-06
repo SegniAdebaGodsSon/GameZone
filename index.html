@@ -14,13 +14,14 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
-<link rel="stylesheet" href="./src/sass/main.css">
+<link rel="stylesheet" href="./assets/style/main.css">
+
 </head>
 
 <body>
     <div class="ui category search col text-center pt-5">
         <div class="ui icon input">
-          <input class="prompt" type="text" placeholder="Search games...">
+          <input class="prompt" type="text" placeholder="Search 515,067 games...">
           <i class="search icon"></i>
         </div>
         <div class="results"></div>
@@ -30,130 +31,90 @@
             <div class="sidebar-content">
                 <div id="pin-sidebar" class="sidebar-item sidebar-menu">
                     <ul>
+                       
                         <li class="header-menu">
                             <span>Home</span>
                         </li>
                         <li class="header-menu">
                             <span>Browse</span>
                         </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fa fa-gamepad"></i>
-                                <span class="menu-text">Platforms</span>
+                        <li>
+                            <a href="#" class="browse platforms">
+                                <i class="fa fa-gamepad browse platforms"></i>
+                                <span class="menu-text browse platforms">Platforms</span>
                             </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">PC</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">PlayStation</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Xbox One</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Nintendo Switch</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">iOS</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Android</a>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
+                            
                         </li>
                        
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fa fa-mask"></i>
-                                <span class="menu-text">Genres</span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">Action</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Strategy</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">RPG</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Shooter</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Adventure</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Puzzle</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Sport</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Racing</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="sidebar">
-                            <a href="#">
-                                <i class="fa fa-download"></i>
-                                <span class="menu-text">Collections</span>
+                        <li>
+                            <a href="#" class="browse genres">
+                                <i class="fa fa-mask browse genres"></i>
+                                <span class="menu-text browse genres">Genres</span>
                             </a>
                         </li>
-                        <li class="sidebar">
-                            <a href="#">
-                                <i class="fa fa-user"></i>
-                                <span class="menu-text">Creators</span>
+                        
+                    
+                        <li>
+                            <a href="#" class="browse developers">
+                                <i class="fas fa-code browse developers"></i>
+                                <span class="menu-text browse developers">Developers</span>
                             </a>
                         </li>
-                        <li class="sidebar">
-                            <a href="#">
-                                <i class="fa fa-tag"></i>
-                                <span class="menu-text">Developers</span>
+                        <li>
+                            <a href="#" class="browse stores">
+                                <i class="fas fa-store browse stores"></i>
+                                <span class="menu-text browse stores">Stores</span>
                             </a>
+                        </li>
+                        <li>
+                            <a href="#" class="browse publishers">
+                                <i class="fas fa-upload browse publishers"></i>
+                                <span class="menu-text browse publishers">Publishers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="browse tags">
+                                <i class="fa fa-tag browse tags"></i>
+                                <span class="menu-text browse tags">Tags</span>
+                            </a>
+                        </li>   
                         <li class="header-menu">
                             <span>Platforms</span>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fab fa-windows"></i>
-                                <span class="menu-text">PC</span>
+                            <a class="platform" href="#" data-id="4">
+                                <i class="fab fa-windows platform"></i>
+                                <span class="menu-text platform">PC</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fab fa-playstation"></i>
-                                <span class="menu-text">PlayStation 4</span>
+                            <a class="platform" href="#" data-id="187">
+                                <i class="fab fa-playstation platform"></i>
+                                <span class="menu-text platform">PlayStation 5</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fab fa-xbox"></i>
-                                <span class="menu-text">Xbox One</span>
+                            <a class="platform" href="#" data-id="1">
+                                <i class="fab fa-xbox platform"></i>
+                                <span class="menu-text platform">Xbox One</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fas fa-mobile-alt"></i>
-                                <span class="menu-text">Nintendo Switch</span>
+                            <a a class="platform" href="#" data-id="7">
+                                <i class="fas fa-gamepad platform"></i>
+                                <span class="menu-text platform">Nintendo Switch</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fab fa-apple"></i>
-                                <span class="menu-text">iOS</span>
+                            <a class="platform" href="#" data-id="3">
+                                <i class="fab fa-apple platform"></i>
+                                <span class="menu-text platform">iOS</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fab fa-android"></i>
-                                <span class="menu-text">Android</span>
+                            <a class="platform" href="#" data-id="21">
+                                <i class="fab fa-android platform"></i>
+                                <span class="menu-text platform">Android</span>
                             </a>
                         </li>
 
@@ -161,27 +122,63 @@
                             <span>Genres</span>
                         </li>
                         <li>
-                            <a href="#">
-                                <i>
-                                    <img src="https://i.ytimg.com/vi/BR8Wnc_AbBc/maxresdefault.jpg" alt="" class="img-fluid">
+                            <a href="#" class="genre" data-id="4">
+                                <i class="genre">
+                                    <img src="https://media.rawg.io/media/games/b8c/b8c243eaa0fbac8115e0cdccac3f91dc.jpg" alt="" class="img-fluid genre">
                                 </i>                                
-                                <span class="menu-text">Action</span>
+                                <span class="menu-text genre">Action</span>
+                            </a>
+                        </li>
+                        <li>    
+                            <a href="#" class="genre" data-id="10">
+                                <i class="genre">
+                                    <img src="https://media.rawg.io/media/games/e4a/e4ab7f784bdc38c76ce6e4cef9715d18.jpg" alt="" class="img-fluid genre">
+                                </i>                                
+                                <span class="menu-text genre">Strategy</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i>
-                                    <img src="https://i.ytimg.com/vi/BR8Wnc_AbBc/maxresdefault.jpg" alt="" class="img-fluid">
-                                </i>                                
-                                <span class="menu-text">Strategy</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i>
-                                    <img src="https://i.ytimg.com/vi/BR8Wnc_AbBc/maxresdefault.jpg" alt="" class="img-fluid">
+                            <a href="#" class="genre" data-id="5">
+                                <i class="genre">
+                                    <img src="https://media.rawg.io/media/games/214/214b29aeff13a0ae6a70fc4426e85991.jpg" alt="" class="img-fluid genre">
                                 </i>
-                                <span class="menu-text">RPG</span>
+                                <span class="menu-text genre">RPG</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="genre" data-id="2">
+                                <i class="genre">
+                                    <img src="https://media.rawg.io/media/games/f87/f87457e8347484033cb34cde6101d08d.jpg" alt="" class="img-fluid genre">
+                                </i>
+                                <span class="menu-text genre">Shooter</span>
+                            </a>
+                        </li><li>
+                            <a href="#" class="genre" data-id="3">
+                                <i class="genre">
+                                    <img src="https://media.rawg.io/media/games/d69/d69810315bd7e226ea2d21f9156af629.jpg" alt="" class="img-fluid genre">
+                                </i>
+                                <span class="menu-text genre">Adventure</span>
+                            </a>
+                        </li><li>
+                            <a href="#" class="genre" data-id="7">
+                                <i class="genre">
+                                    <img src="https://media.rawg.io/media/games/51c/51c430f1795c79b78f863a9f22dc422d.jpg" alt="" class="img-fluid genre">
+                                </i>
+                                <span class="menu-text genre">Puzzle</span>
+                            </a>
+                        </li><li>
+                            <a href="#" class="genre" data-id="1">
+                                <i class="genre">
+                                    <img src="https://media.rawg.io/media/games/97a/97a5fee8bba1189f70a9874171f45195.jpg" alt="" class="img-fluid genre">
+                                </i>
+                                <span class="menu-text genre">Racing</span>
+                            </a>
+                        </li><li>
+                            <a href="#" class="genre" data-id="15">
+                                <i class="genre">
+                                    <img src="https://media.rawg.io/media/games/234/2340b8be821c583e1540339d7dfff1b8.jpg" alt="" class="img-fluid genre">
+                                </i>
+                                <span class="menu-text genre">Sports</span>
                             </a>
                         </li>
                     </ul>
@@ -199,15 +196,19 @@
             
             <div class="container-fluid">
                 <div class="pt-3">
-                    <h1 class="jumbo-text">
-                        New and trending
+                    <h1 class="jumbo-text page-ish">
+                        All Games
                     </h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, deserunt.
-                    </p>
+                    <h4 class="description text-muted lead"></h4>
+
                 </div>
-                <div class="row">
-                    <div class="col-sm-10 col-md-4 col-lg-3 pt-5">
+                <div class="row all-games">
+
+                    <div class="spinner-border text-secondary mx-auto mt-6" style="width: 10rem; height: 10rem;" role="status">
+                        <span class="visually-hidden"></span>
+                        
+                    </div>
+                    <!-- <div class="col-sm-10 col-md-4 col-lg-3 pt-5">
                         <div class="card">
                             <img src="https://www.dlcompare.com/upload/cache/game_tetiere/upload/gameimage/file/38085.jpeg" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -223,8 +224,8 @@
                               <h5 class="card-title">Card title</h5>
                             </div>
                           </div>
-                    </div>
-                    </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
         </main>
@@ -236,7 +237,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="./src/js/main.js"></script>
-</body>
+        <script type="module" src="./assets/scripts/app.js"></script>
+
+
+    <script>
+        $(".sidebar-dropdown > a").click(function () {
+        $(".sidebar-submenu").slideUp(200);
+        if ($(this).parent().hasClass("active")) {
+        $(".sidebar-dropdown").removeClass("active");
+        $(this).parent().removeClass("active");
+        } else {
+        $(".sidebar-dropdown").removeClass("active");
+        $(this).next(".sidebar-submenu").slideDown(200);
+        $(this).parent().addClass("active");
+        }
+    });
+    //Pin sidebar
+    $("#pin-sidebar").ready(function () {
+        $(".page-wrapper").addClass("pinned");
+        $("#sidebar").hover(
+        function () {
+            console.log("mouseenter");
+            $(".page-wrapper").addClass("sidebar-hovered");
+        },
+        function () {
+            console.log("mouseout");
+            $(".page-wrapper").removeClass("sidebar-hovered");
+        }
+        );
+    });
+
+    </script>
+    </body>
+
+
 
 </html>
