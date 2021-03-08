@@ -141,11 +141,17 @@ export default class API{
             if(input!=="") queryLink+=`${argumentList[ind]}=${input}&`;
         });            
 
+        console.log(queryLink)
         const response = await fetch(queryLink, this.myHeader);
         const data = await response.json();
         return {data};
     }
 
+    async customFetch(url){
+        let response = await fetch(url);
+        let data = await response.json();
+        return {data};
+    }
 
     
 

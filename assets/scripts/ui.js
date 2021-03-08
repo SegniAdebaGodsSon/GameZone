@@ -6,7 +6,7 @@ export default class UI{
     }
 
     showGames(games){
-        this.allGames.innerHTML = ''
+        // this.allGames.innerHTML = ''
         
 
         games.data.results.forEach(game => {
@@ -76,10 +76,7 @@ export default class UI{
         })
     }
 
-    showBrowsed(browsed){
-        this.allGames.innerHTML = '';
-        
-        
+    showBrowsed(browsed){        
         browsed.forEach(data => {
             let games = data.games.map(game => game.name);
             games = games.join('   -   ');

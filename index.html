@@ -213,7 +213,7 @@
                     <h4 class="description text-muted lead"></h4>
 
                 </div>
-                <div class="row all-games">
+                <div class="row all-games" style="padding-bottom: 10em;">
 
                     <div class="spinner-border text-secondary mx-auto mt-6" style="width: 10rem; height: 10rem;" role="status">
                         <span class="visually-hidden"></span>
@@ -237,6 +237,8 @@
                           </div>
                         </div>
                     </div> -->
+
+                    
                 </div>
             </div>
         </main>
@@ -268,11 +270,11 @@
         $(".page-wrapper").addClass("pinned");
         $("#sidebar").hover(
         function () {
-            console.log("mouseenter");
+            // console.log("mouseenter");
             $(".page-wrapper").addClass("sidebar-hovered");
         },
         function () {
-            console.log("mouseout");
+            // console.log("mouseout");
             $(".page-wrapper").removeClass("sidebar-hovered");
         }
         );

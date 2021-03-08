@@ -6,13 +6,24 @@ const api = new API(),
 
 const gamePage = document.querySelector('.gamePage');
 const title = document.querySelector('.page-ish');
+const content = document.querySelector('.all-games');
+const bigSpinner = '<div class="spinner-border text-secondary mx-auto mt-6" style="width: 10rem; height: 10rem;" role="status">';
+const smallSpinner = '<div class="spinner-border btm-spinner text-secondary mx-auto" style="width: 5rem; height: 5rem; margin-top: 10em;" role="status"></div>';
 
-
+if(document.querySelector('.btm-spinner') && sessionStorage.getItem('nextPage') === 'none'){
+      document.querySelector('.btm-spinner').remove();
+}
 
 if(ui.allGames){
 
       api.getGames()
-      .then(data => ui.showGames(data));
+      .then(data => {
+            if(data.data.next) sessionStorage.setItem('nextPage', data.data.next);
+            else sessionStorage.setItem('nextPage', 'none');
+            ui.allGames.innerHTML = '';
+            ui.showGames(data);
+            ui.allGames.innerHTML += smallSpinner;
+      });
 
       ui.allGames.addEventListener('click', e => {
 
@@ -51,11 +62,52 @@ if(ui.allGames){
             e.preventDefault();
             if(e.key === "Enter"){
                   if(e.target.value !== ""){
-                        api.compoundSearch(e.target.value).then(data => ui.showGames(data))
-                        document.querySelector('.page-ish').textContent('Search results for: '+ e.target.value);
+                        ui.allGames.innerHTML = bigSpinner;
+                        api.compoundSearch(e.target.value, '', '', '', '').then(data => {
+                              ui.allGames.innerHTML = '';
+                              ui.showGames(data);
+                              if(data.data.next) sessionStorage.setItem('nextPage', data.data.next);
+                              else sessionStorage.setItem('nextPage', 'none');
+
+                        })
+                        document.querySelector('.page-ish').textContent = 'Search results for: '+ e.target.value;
+
                   }
             }
       })
+
+
+
+      window.addEventListener('scroll', e => {
+            const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+
+            if(scrollTop + clientHeight >= scrollHeight){
+                  let next = sessionStorage.getItem('nextPage');
+                  let bottomSpinner = document.querySelector('.btm-spinner');
+
+                  if(next !== 'none'){
+                        api.customFetch(next)
+                              .then(data => {
+                                    if(data.data.next) sessionStorage.setItem('nextPage', data.data.next);
+                                    else sessionStorage.setItem('nextPage', 'none');
+                                    if(bottomSpinner) bottomSpinner.remove();
+                                    if(["platforms", "genres", "stores", "publishers", "tags", "developers"].includes(title.textContent.trim())){
+                                          ui.showBrowsed(data.data.results);
+                                    }else{
+                                          ui.showGames(data);
+                                    }
+
+                                   if(data.data.next){
+                                          ui.allGames.innerHTML += '<div class="spinner-border btm-spinner text-secondary mx-auto" style="width: 5rem; height: 5rem; margin-top: 10em;" role="status"></div>';
+                                    }
+      
+                              });
+                  }else{
+                        if(bottomSpinner) bottomSpinner.remove();
+                  }
+            }
+      
+      });
 }
 
 
@@ -101,13 +153,20 @@ if(gamePage){
 if(document.querySelector('.sidebar-content')){
 
       document.querySelector('.sidebar-content').addEventListener('click', e =>{
+            ui.allGames.innerHTML = '';
             if(e.target.classList.contains('platform')){
                   let target = e.target;
                   if(target.tagName === "I" || target.tagName === "SPAN"){
                         target = e.target.parentElement;
                   }
                   let id = target.dataset.id;
-                  api.compoundSearch('', '', '', '', id ).then(data => ui.showGames(data));
+                  api.compoundSearch('', '', '', '', id ).then(data => {
+                        ui.allGames.innerHTML = '';
+                        ui.showGames(data);
+                        ui.allGames.innerHTML += smallSpinner;
+                        if(data.data.next) sessionStorage.setItem('nextPage', data.data.next);
+                        else sessionStorage.setItem('nextPage', 'none');
+                  });
                   let platform = new Map();
                   platform.set('4', 'PC');
                   platform.set('187', 'Playstation 5');
@@ -125,6 +184,7 @@ if(document.querySelector('.sidebar-content')){
 
 
             if(e.target.classList.contains('genre')){
+                  ui.allGames.innerHTML = '';
                   let target = e.target;
                   if(target.tagName === "I" || target.tagName === "SPAN"){
                         target = e.target.parentElement;
@@ -134,7 +194,13 @@ if(document.querySelector('.sidebar-content')){
                   }
 
                   let id = target.dataset.id;
-                  api.compoundSearch('', id, '', '', '' ).then(data => ui.showGames(data));
+                  api.compoundSearch('', id, '', '', '' ).then(data => {
+                        ui.allGames.innerHTML = '';
+                        ui.showGames(data);
+                        ui.allGames.innerHTML += smallSpinner;
+                        if(data.data.next) sessionStorage.setItem('nextPage', data.data.next);
+                        else sessionStorage.setItem('nextPage', 'none');
+                  });
                   let genre = new Map();
                   genre.set('4', 'Action');
                   genre.set('10', 'Strategy');
@@ -154,6 +220,8 @@ if(document.querySelector('.sidebar-content')){
             }
 
             if(e.target.classList.contains('browse')){
+                  ui.allGames.innerHTML = '';
+
                   let classes = [... e.target.classList];
 
                   // ui.allGames.innerHTML = `<div class="spinner-border text-secondary mx-auto mt-6" style="width: 10rem; height: 10rem;" role="status"><span class="visually-hidden"></span></div>`;
@@ -162,32 +230,42 @@ if(document.querySelector('.sidebar-content')){
                   ui.allGames.innerHTML = `<div class="spinner-border text-secondary mx-auto mt-6" style="width: 10rem; height: 10rem;" role="status"><span class="visually-hidden"></span></div>`;
 
 
+                  let apiCall = null;
                   switch(classes[classes.length-1]){
                         case 'platforms':                        
-                              api.getPlatforms().then(data => ui.showBrowsed(data.data.results));
+                              apiCall = api.getPlatforms()
                               break;
 
                         case 'genres':
-                              api.getGenres().then(data => ui.showBrowsed(data.data.results));
+                              apiCall = api.getGenres()
                               break;
                               
                         case 'developers':
-                              api.getDevelopers().then(data => ui.showBrowsed(data.data.results));
+                              apiCall = api.getDevelopers()
                               break;
 
                         case 'stores':
-                              api.getStores().then(data => ui.showBrowsed(data.data.results));
+                              apiCall = api.getStores()
                               break;      
 
                         case 'publishers':
-                              api.getPublishers().then(data => ui.showBrowsed(data.data.results));
+                              apiCall = api.getPublishers()
                               break;
                               
                         case 'tags':
-                              api.getTags().then(data => ui.showBrowsed(data.data.results));
+                              apiCall = api.getTags()
                               break;
-                              
-                        }
+                        
+      
+                        }    
+
+                  if(apiCall) apiCall.then(data => {
+                        ui.allGames.innerHTML = '';
+                        ui.showBrowsed(data.data.results);
+                        ui.allGames.innerHTML += smallSpinner;
+                        if(data.data.next) sessionStorage.setItem('nextPage', data.data.next);
+                        else sessionStorage.setItem('nextPage', 'none');
+                  });
 
 
             }
